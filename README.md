@@ -31,4 +31,4 @@ This is a [Ruby on Rails](https://rubyonrails.org/) starter app that connects to
 ## 📝 Notes
 
 This app was generated with the `rails new` command. Read more about Rails on
-their [official website](https://rubyonrails.org/)
+their [official website](https://rubyonrails.org/)ok
