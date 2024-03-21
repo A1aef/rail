@@ -32,3 +32,30 @@ This is a [Ruby on Rails](https://rubyonrails.org/) starter app that connects to
 
 This app was generated with the `rails new` command. Read more about Rails on
 their [official website](https://rubyonrails.org/)ok
+
+
+import requests
+import json
+
+def fetch_earthquake_data():
+    # USGS API for past day's all earthquake data
+    url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
+    
+    # Send a HTTP request to the URL
+    response = requests.get(url)
+    
+    # If request is successful, status code will be 200
+    if response.status_code == 200:
+        # Get the content of the response
+        data = response.content
+        
+        # Parse JSON data
+        earthquakes = json.loads(data)
+        
+        # Print earthquake data
+        for earthquake in earthquakes["features"]:
+            print(f"Magnitude: {earthquake['properties']['mag']}, Location: {earthquake['properties']['place']}")
+    else:
+        print(f"Failed to fetch earthquake data, status code: {response.status_code}")
+
+fetch_earthquake_data()
